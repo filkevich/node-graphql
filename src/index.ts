@@ -1,8 +1,8 @@
 import express from 'express'
 import dotenv from 'dotenv'
-import axios from 'axios'
 import { graphqlHTTP } from 'express-graphql'
 import generalSchema from './modules/generalSchema'
+import { genres } from './modules/genres/genres.service'
 
 dotenv.config()
 
@@ -10,14 +10,7 @@ const app = express()
 const port = process.env.GRAPHQL_PORT || 5000
 
 const root = {
-  artists: async () => {
-    const { data: { items } } = await axios.get('http://localhost:3002/v1/artists')
-    return items
-  },
-  genres: async () => {
-    const { data: { items } } = await axios.get('http://localhost:3001/v1/genres')
-    return items
-  }
+  genres: genres()
 }
 
 app.use(express.json())
