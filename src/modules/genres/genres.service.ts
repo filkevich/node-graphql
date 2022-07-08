@@ -1,15 +1,7 @@
 import { getItems, getItemById } from '../../service'
+import { TGenres, TGenre } from './genres'
 
-type TGenresFn = (limit?: number, offset?: number) => Promise<any>
+const GENRES_URL = process.env.GENRES_URL || 'http://localhost:3001/v1/genres'
 
-type TGenreArgs = {
-  id: string
-}
-
-type TGenre = (args: TGenreArgs) => Promise<any>
-
-const genresUrl = process.env.GENRES_URL || 'http://localhost:3001/v1/genres'
-
-export const genres: TGenresFn = (limit, offset) => getItems(genresUrl, { limit, offset })
-
-export const genre: TGenre = ({id}) => getItemById(genresUrl, id)
+export const genres: TGenres = (limit, offset) => getItems(GENRES_URL, { limit, offset })
+export const genre: TGenre = ({id}) => getItemById(GENRES_URL, id)
