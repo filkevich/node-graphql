@@ -1,6 +1,6 @@
 const bandsSchema = `
   type Band {
-    _id: ID!
+    id: ID!
     name: String
     origin: String
     members: [Member]
@@ -15,6 +15,11 @@ const bandsSchema = `
     middleName: String
     instrument: String
     years: [String]
+  }
+
+  type Query {
+    bands: [Band]
+    band(id: ID!): Band
   }
 `
 export default bandsSchema

@@ -1,4 +1,4 @@
-export type TGenreObj = {
+export type TArtistObj = {
   _id: string,
   firstName: string,
   secondName: string,
@@ -11,5 +11,5 @@ export type TGenreObj = {
 }
 
 export type TArtistsArgs = { id: string }
-export type TArtists = (limit?: number, offset?: number) => Promise<TGenreArgs[]>
-export type TArtist = (args: TArtistsArgs) => Promise<TGenreObj>
+export type TArtists = (limit?: number, offset?: number) => Promise<TArtistObj[]>
+export type TArtist = (args: TArtistsArgs) => Promise<TArtistObj>
