@@ -5,7 +5,9 @@ type TGetParams = {
   offset: number | undefined
 }
 
-type TGetItemsFn = (url: string, params?: TGetParams) => Promise<any>
+type TGetItems = (url: string, params?: TGetParams) => Promise<any>
+
+type TGetItemByID = (url: string, id: string) => Promise<any>
 
 type TGenre = {
   _id: string,
@@ -15,8 +17,15 @@ type TGenre = {
   year: number,
 }
 
-export const getItems: TGetItemsFn = async (url, params) => {
+export const getItems: TGetItems = async (url, params) => {
   const { data: { items } } = await axios.get(url, { params })
 
   return items.map((data: TGenre) => ({ ...data, id: data._id }))
+}
+
+export const getItemById: TGetItemByID = async (url, id) => {
+  const composedUrl = url + '/' + id
+  const { data } = await axios.get(composedUrl)
+
+  return { ...data, id: data._id }
 }

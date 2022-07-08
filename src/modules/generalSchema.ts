@@ -8,7 +8,7 @@ import genresSchema from './genres/genres.schema'
 import tracksSchema from './tracks/tracks.schema'
 import usersSchema from './users/users.schema'
 
-const generalSchema = makeExecutableSchema({
+const schemas = makeExecutableSchema({
   typeDefs: [
     albumsSchema,
     artistsSchema,
@@ -20,4 +20,4 @@ const generalSchema = makeExecutableSchema({
   ]
 })
 
-export default generalSchema
+export default schemas
