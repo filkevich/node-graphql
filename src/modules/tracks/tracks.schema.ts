@@ -9,5 +9,10 @@ const tracksSchema = `
     released: Int
     genres: [Genre]
   }
+
+  type Query {
+    tracks: [Track]
+    track(id: ID!): Track
+  }
 `
 export default tracksSchema
