@@ -9,4 +9,4 @@ export type TBandObj = {
 
 export type TBandsArgs = { id: string }
 export type TBands = (limit?: number, offset?: number) => Promise<TBandObj[]>
-export type TBand = (args: TArtistsArgs) => Promise<TBandObj>
+export type TBand = (args: TBandsArgs) => Promise<TBandObj>

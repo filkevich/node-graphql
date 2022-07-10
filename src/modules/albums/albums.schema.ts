@@ -9,5 +9,10 @@ const albumsSchema = `
     genres: [Genre]
     image: String
   }
+
+  type Query {
+    albums: [Album]
+    album(id: ID!): Album
+  }
 `
 export default albumsSchema
